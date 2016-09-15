@@ -24,9 +24,10 @@ public class App
     	APICalls.apiTest();
     	APICalls.authTest();
     	setActiveUser();
-    	APICalls.postMessage("Taylor Swift Bot is active" 
-    		+ "\nGenerating 8 random song lyrics off the keyword \"Taylor\""
-    		+ "\nIf you want to add to the project go to ");
+    	APICalls.postMessage("Repo Location : https://github.com/Disorientedart/SlackBot");
+//    	APICalls.postMessage("Taylor Swift Bot is active" 
+//    		+ "\nGenerating 8 random song lyrics off the keyword \"Taylor\""
+//    		+ "\nIf you want to add to the project go to ");
     	do{
     		channelHistory();
     		Thread.sleep(1500);
