@@ -50,7 +50,6 @@ public class JSON {
     public static boolean parseJSONMessages(String response) throws IOException{
     	boolean presence = false;
     	System.out.println("Reviewing Messages:");
-    	System.out.println(response);
 		JSONObject parseME = new JSONObject(response);
 		JSONArray useMe = parseME.getJSONArray("messages");
 		int count = 0;
@@ -58,7 +57,7 @@ public class JSON {
 			JSONObject indexObj = useMe.optJSONObject(count);
 			String txt = indexObj.get("text").toString();
 			String ts = indexObj.get("ts").toString();
-			if(txt.contains("Taylor") && !ts.equals(TaylorSwiftSlackInfo.getLastMessage())){
+			if(txt.contains("Taylor") || txt.contains("taylor") && !ts.equals(TaylorSwiftSlackInfo.getLastMessage())){
 				presence = true;
 				TaylorSwiftSlackInfo.setLastMessage(indexObj.get("ts").toString());
 				return presence;
