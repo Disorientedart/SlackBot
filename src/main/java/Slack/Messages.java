@@ -2,7 +2,7 @@ package Slack;
 
 import java.util.Random;
 
-public class Lyrics {
+public class Messages {
     
     public static String randomMessage(){
     	String message;

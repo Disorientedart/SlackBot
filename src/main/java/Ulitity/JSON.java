@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import DisorientedArt.SlackBot.TaylorSwiftSlackInfo;
+import DisorientedArt.SlackBot.SlackInfo;
 
 
 public class JSON {
@@ -22,12 +22,12 @@ public class JSON {
     public static JSONObject messageJSON(){
     	JSONObject parse = new JSONObject();
 
-    	parse.put("token", TaylorSwiftSlackInfo.getToken());
-    	parse.put("channel", TaylorSwiftSlackInfo.getChannel());
+    	parse.put("token", SlackInfo.getToken());
+    	parse.put("channel", SlackInfo.getChannel());
     	parse.put("text", "This bot is currently under construction");
-    	parse.put("as_user", TaylorSwiftSlackInfo.getAS_User());
-    	parse.put("username", TaylorSwiftSlackInfo.getUsername());
-    	parse.put("icon_url", TaylorSwiftSlackInfo.getIcon_url());
+    	parse.put("as_user", SlackInfo.getAS_User());
+    	parse.put("username", SlackInfo.getUsername());
+    	parse.put("icon_url", SlackInfo.getIcon_url());
     	
     	return parse;
     }
@@ -40,7 +40,7 @@ public class JSON {
 			System.out.println(parseME);
 			String useMe = parseME.get("ts").toString();
 			System.out.println(useMe);
-			TaylorSwiftSlackInfo.setDeleteMessage(useMe);
+			SlackInfo.setDeleteMessage(useMe);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,9 +57,9 @@ public class JSON {
 			JSONObject indexObj = useMe.optJSONObject(count);
 			String txt = indexObj.get("text").toString();
 			String ts = indexObj.get("ts").toString();
-			if(txt.contains("Taylor") || txt.contains("taylor") && !ts.equals(TaylorSwiftSlackInfo.getLastMessage())){
+			if(txt.contains("Taylor") || txt.contains("taylor") && !ts.equals(SlackInfo.getLastMessage())){
 				presence = true;
-				TaylorSwiftSlackInfo.setLastMessage(indexObj.get("ts").toString());
+				SlackInfo.setLastMessage(indexObj.get("ts").toString());
 				return presence;
 			}
 			count++;
