@@ -73,7 +73,10 @@ public class APICalls {
 		String hostAddress = SlackInfo.getApiHost() + "/rtm.start";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
 		RequestBody body = RequestBody.create(mediaType,
-				SlackInfo.getTokenURL() + "&no_unreads=0" + "&simple_latest=0" + "&mpim_aware=1");
+				SlackInfo.getTokenURL()
+				+ SlackInfo.getUnreadURL()
+				+ SlackInfo.getSimpleLatestURL()
+				+ SlackInfo.getMPIMAwareURL());
 		
 		postAPI(hostAddress, body);
 	}
@@ -86,8 +89,8 @@ public class APICalls {
     	RequestBody body = RequestBody.create(mediaType, 
     			SlackInfo.getTokenURL()
     			+ SlackInfo.getChannelURL()
-    			+ "&inclusive=1"
-    			+ "&count=2");
+    			+ SlackInfo.getInclusiveURL()
+    			+ SlackInfo.getCountURL());
     	
     	String messageLogs = postParse(hostAddress, body);
 		boolean activateBot = JSON.parseJSONMessages(messageLogs);
@@ -117,7 +120,6 @@ public class APICalls {
 	/**
 	 * Used to create the a posting API call.
 	 * @param hostAddress
-	 * @param body
 	 * @throws IOException
 	 */
 	private static void getAPI(String hostAddress) throws IOException {
@@ -189,17 +191,5 @@ public class APICalls {
     	response.close();
     	return strResponse;
 	}
-
-	// public static void jsonSoup()throws IOException{
-	// System.out.println( "Hello World!" );
-	//
-	// Document doc = Jsoup.connect("").get();
-	// Elements newsHeadlines = doc.select("");
-	//
-	// for(Element news : newsHeadlines){
-	// String url = news.attr("");
-	// System.out.println(url);
-	// }
-	// }
 
 }

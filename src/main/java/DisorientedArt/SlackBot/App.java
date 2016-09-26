@@ -3,14 +3,7 @@ package DisorientedArt.SlackBot;
 import java.io.IOException;
 import java.time.LocalTime;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import Slack.Messages;
 import Ulitity.APICalls;
-import Ulitity.JSON;
 
 
 public class App 
@@ -31,8 +24,9 @@ public class App
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				break;
 			}
-    		Thread.sleep(1500);
+    		Thread.sleep(2000);
     	}while(LocalTime.now().isBefore(LocalTime.of(18, 00)));
 
     	//Can be Used to remove any messages that are posted during the editing process of the code

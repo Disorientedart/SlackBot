@@ -7,7 +7,7 @@ public class Messages {
     public static String randomMessage(){
     	String message;
     	
-    	String[] availMessages = {
+    	String[] availableMessages = {
     			"Nice to meet you, where you been?\nI could show you incredible things\nMagic, madness, heaven, sin",
     			"You made a really deep cut\nAnd, baby, now we got bad blood",
     			"/'Cause, baby, now we got bad blood\nYou know it used to be mad love",
@@ -19,9 +19,9 @@ public class Messages {
     			"It feels like one of those nights,\nWe ditch the whole scene"
     	};
     	
-    	Random rn = new Random();
-    	int i = rn.nextInt(availMessages.length);
-    	message = availMessages[i];
+    	Random randNum = new Random();
+    	int i = randNum.nextInt(availableMessages.length);
+    	message = availableMessages[i];
     	return message;
     }
 
