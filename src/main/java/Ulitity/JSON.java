@@ -75,8 +75,9 @@ public class JSON {
 		int count = 0;
 		while(count< useMe.length()){
 			JSONObject indexObj = useMe.optJSONObject(count);
-			String mapValue = indexObj.get("valve").toString();
 			String mapKey = indexObj.get(key).toString();
+			String mapValue = indexObj.get("ts").toString();
+			System.out.println("Message " + count + " " + mapValue);
 			
 			System.out.println("Reviewing Message " + count);
 			

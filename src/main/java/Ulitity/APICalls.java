@@ -19,6 +19,15 @@ public class APICalls {
 		
 		APICalls.postMessageBuilder(addOn);
 	}
+	
+	public static void giphyMessage(String text) throws IOException {
+		System.out.println("Preparing to post a message");
+		
+		String addOn = "&text=" + text + " Taylor Swift"
+				+ "&command=/giphy";
+		
+		APICalls.postMessageBuilder(addOn);
+	}
 
 	public static void postMessageBuilder(String addOns) throws IOException {
 		System.out.println("Building the message");
