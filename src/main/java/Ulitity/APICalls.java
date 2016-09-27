@@ -93,7 +93,7 @@ public class APICalls {
     			+ SlackInfo.getCountURL());
     	
     	String messageLogs = postParse(hostAddress, body);
-		boolean activateBot = JSON.parseJSONMessages(messageLogs);
+		boolean activateBot = JSON.parseJSONMessages(messageLogs, "ts");
 		if (activateBot){
 			APICalls.postMessage(Messages.randomMessage());
 		}
@@ -131,7 +131,9 @@ public class APICalls {
     	  .addHeader("cache-control", "no-cache")
     	  .build();
     	Response response = client.newCall(request).execute();
+    	String strResponse = response.body().string();
     	response.close();
+    	System.out.println(strResponse);
 	}
 
 	/**
@@ -149,7 +151,9 @@ public class APICalls {
     	  .addHeader("cache-control", "no-cache")
     	  .build();
     	Response response = client.newCall(request).execute();
+    	String strResponse = response.body().string();
     	response.close();
+    	System.out.println(strResponse);
 	}
 	
 	/**
@@ -169,6 +173,7 @@ public class APICalls {
     	Response response = client.newCall(request).execute();
     	String strResponse = response.body().string();
     	response.close();
+    	System.out.println(strResponse);
     	return strResponse;
 	}
 	
@@ -189,6 +194,7 @@ public class APICalls {
     	Response response = client.newCall(request).execute();
     	String strResponse = response.body().string();
     	response.close();
+    	System.out.println(strResponse);
     	return strResponse;
 	}
 

@@ -4,8 +4,11 @@ import java.util.Random;
 
 public class Messages {
     
+	/**
+	 * Returns a random group of song lyrics
+	 * @return
+	 */
     public static String randomMessage(){
-    	String message;
     	
     	String[] availableMessages = {
     			"Nice to meet you, where you been?\nI could show you incredible things\nMagic, madness, heaven, sin",
@@ -21,7 +24,42 @@ public class Messages {
     	
     	Random randNum = new Random();
     	int i = randNum.nextInt(availableMessages.length);
-    	message = availableMessages[i];
+    	String message = availableMessages[i];
+    	return message;
+    }
+    
+    /**
+     * Returns an adjective for a giphy post
+     * @return
+     */
+    public static String randomAdjective(){
+    	
+    	String[] adjective = {
+    			"other", "new", "good",	"high",
+    			"old", "great", "big", "American",
+    			"small", "large", "national", "young",
+    			"different", "black", "long", "little",
+    			"important", "political", "bad", "white",
+    			"real", "best", "right", "social",
+    			"only", "public", "sure", "low",
+    			"early", "able", "late", "hard",
+    			"major", "better", "strong", "international",
+    			"full", "special", "easy", "recent",
+    			"personal", "open", "red", "difficult",
+    			"available", "short", "single", "medical",
+    			"current", "wrong", "private", "past",
+    			"fine", "common", "poor", "natural",
+    			"significant", "hot", "happy", "serious",
+    			"ready", "simple", "general", "environmental",
+    			"financial", "blue", "dark", "various",
+    			"entire", "close", "cold", "final",
+    			"green", "nice", "huge", "popular",
+    			"traditional", "cultural"
+    	};
+    	
+    	Random randNum = new Random();
+    	int i = randNum.nextInt(adjective.length);
+    	String message = adjective[i];
     	return message;
     }
 
