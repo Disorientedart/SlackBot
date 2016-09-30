@@ -14,31 +14,56 @@ public class App
     {
     	//Sets the token from external file of userToken.txt
     	SlackInfo.setToken(SlackInfo.externalToken());
+    	printTime();
     	
-    	//Runs the code throughout a typical work day
-    	APICalls.apiTest();
-    	APICalls.authTest();
-    	APICalls.setActiveUser();
-    	APICalls.giphyMessage(Messages.randomAdjective());
-    	//APICalls.postMessage("Repo Location : https://github.com/Disorientedart/SlackBot");
-    	do{
-    		try {
-				APICalls.channelHistory();
-			} catch (Exception e) {
-				 //TODO Auto-generated catch block
-				e.printStackTrace();
-				break;
-			}
-    		Thread.sleep(2000);
-    	}while(LocalTime.now().isBefore(LocalTime.of(18, 00)));
-
-    	//Can be Used to remove any messages that are posted during the editing process of the code
-    	//Add the Time Stamp of the message you want to delete,
-    	//Time Stamp can be found in the console log of the previous run
+    	switch (args[0])
+    	{
+    		case "active":
+    	    	do{
+    	    		try {
+    					APICalls.channelHistory();
+    				} catch (Exception e) {
+    					 //TODO Auto-generated catch block
+    					e.printStackTrace();
+    					break;
+    				}
+    	    		Thread.sleep(2000);
+    	    	}while(LocalTime.now().isBefore(LocalTime.of(23, 50)));
+    	    	break;
+    		
+    		case "delete":
+    	    	SlackInfo.setDeleteMessage("");
+    	    	APICalls.removeMessage();
+    			break;
+    			
+    		case "test":
+    	    	//Runs the code throughout a typical work day
+    	    	APICalls.apiTest();
+    	    	APICalls.authTest();
+    	    	APICalls.setActiveUser();
+    	    	APICalls.giphyMessage(Messages.randomAdjective());
+    			break;
+    		
+    		default:
+    	    	do{
+    	    		try {
+    					APICalls.channelHistory();
+    				} catch (Exception e) {
+    					 //TODO Auto-generated catch block
+    					e.printStackTrace();
+    					break;
+    				}
+    	    		Thread.sleep(2000);
+    	    	}while(LocalTime.now().isBefore(LocalTime.of(18, 00)));
+    			break;	
+    	}
     	
-//    	SlackInfo.setDeleteMessage("1474953710.000012");
-//    	APICalls.removeMessage();
+    	printTime();
     	
     }
-        
+
+    public static void printTime(){
+    	System.out.println(LocalTime.now());
+    }
+    
 }

@@ -29,7 +29,7 @@ public class APICalls {
 		APICalls.postMessageBuilder(addOn);
 	}
 
-	public static void postMessageBuilder(String addOns) throws IOException {
+	private static void postMessageBuilder(String addOns) throws IOException {
 		System.out.println("Building the message");
 		// API address
 		String hostAddress = SlackInfo.getApiHost() + "/chat.postMessage";

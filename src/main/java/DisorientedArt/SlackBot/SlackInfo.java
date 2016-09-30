@@ -24,7 +24,7 @@ public class SlackInfo {
 	private static int simpleLatest 	= 0;
 	private static int unread 			= 0;
 	private static String username 		= "t_swift";
-	private static String token 		= "";
+	private static String token;
 
 	
 	public static String externalToken() throws IOException{
