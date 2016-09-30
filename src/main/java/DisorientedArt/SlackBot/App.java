@@ -16,7 +16,7 @@ public class App
     	SlackInfo.setToken(SlackInfo.externalToken());
     	printTime();
     	
-    	switch (args[0])
+		switch (args[0].toString())
     	{
     		case "active":
     	    	do{
