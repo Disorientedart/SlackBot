@@ -16,47 +16,51 @@ public class App
     	SlackInfo.setToken(SlackInfo.externalToken());
     	printTime();
     	
-		switch (args[0].toString())
-    	{
-    		case "active":
-    	    	do{
-    	    		try {
-    					APICalls.channelHistory();
-    				} catch (Exception e) {
-    					 //TODO Auto-generated catch block
-    					e.printStackTrace();
-    					break;
-    				}
-    	    		Thread.sleep(2000);
-    	    	}while(LocalTime.now().isBefore(LocalTime.of(23, 50)));
-    	    	break;
-    		
-    		case "delete":
-    	    	SlackInfo.setDeleteMessage("");
-    	    	APICalls.removeMessage();
-    			break;
-    			
-    		case "test":
-    	    	//Runs the code throughout a typical work day
-    	    	APICalls.apiTest();
-    	    	APICalls.authTest();
-    	    	APICalls.setActiveUser();
-    	    	APICalls.giphyMessage(Messages.randomAdjective());
-    			break;
-    		
-    		default:
-    	    	do{
-    	    		try {
-    					APICalls.channelHistory();
-    				} catch (Exception e) {
-    					 //TODO Auto-generated catch block
-    					e.printStackTrace();
-    					break;
-    				}
-    	    		Thread.sleep(2000);
-    	    	}while(LocalTime.now().isBefore(LocalTime.of(18, 00)));
-    			break;	
-    	}
+    	
+    	APICalls.apiTest();
+    	APICalls.authTest();
+
+//		switch (args[0].toString())
+//    	{
+//    		case "active":
+//    	    	do{
+//    	    		try {
+//    					APICalls.channelHistory();
+//    				} catch (Exception e) {
+//    					 //TODO Auto-generated catch block
+//    					e.printStackTrace();
+//    					break;
+//    				}
+//    	    		Thread.sleep(2000);
+//    	    	}while(LocalTime.now().isBefore(LocalTime.of(23, 50)));
+//    	    	break;
+//    		
+//    		case "delete":
+//    	    	SlackInfo.setDeleteMessage("");
+//    	    	APICalls.removeMessage();
+//    			break;
+//    			
+//    		case "test":
+//    	    	//Runs the code throughout a typical work day
+//    	    	APICalls.apiTest();
+//    	    	APICalls.authTest();
+//    	    	APICalls.setActiveUser();
+//    	    	APICalls.giphyMessage(Messages.randomAdjective());
+//    			break;
+//    		
+//    		default:
+//    	    	do{
+//    	    		try {
+//    					APICalls.channelHistory();
+//    				} catch (Exception e) {
+//    					 //TODO Auto-generated catch block
+//    					e.printStackTrace();
+//    					break;
+//    				}
+//    	    		Thread.sleep(2000);
+//    	    	}while(LocalTime.now().isBefore(LocalTime.of(18, 00)));
+//    			break;	
+//    	}
     	
     	printTime();
     	
