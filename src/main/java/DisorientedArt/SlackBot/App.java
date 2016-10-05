@@ -14,11 +14,22 @@ public class App
     {
     	//Sets the token from external file of userToken.txt
     	SlackInfo.setToken(SlackInfo.externalToken());
-    	printTime();
-    	
+//    	printTime();
+//    	
     	
     	APICalls.apiTest();
     	APICalls.authTest();
+    	
+    	do{
+		try {
+			APICalls.channelHistory();
+		} catch (Exception e) {
+			 //TODO Auto-generated catch block
+			e.printStackTrace();
+			break;
+		}
+		Thread.sleep(2000);
+    	}while(LocalTime.now().isBefore(LocalTime.of(18, 00)));
 
 //		switch (args[0].toString())
 //    	{
@@ -62,7 +73,7 @@ public class App
 //    			break;	
 //    	}
     	
-    	printTime();
+//    	printTime();
     	
     }
 
