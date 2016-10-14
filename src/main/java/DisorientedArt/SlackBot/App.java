@@ -1,6 +1,7 @@
 package DisorientedArt.SlackBot;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.time.LocalTime;
 
 import Slack.Messages;
@@ -12,10 +13,20 @@ public class App
 	
     public static void main( String[] args ) throws IOException, InterruptedException
     {
+    	String userInput = args[1];
     	//Sets the token from external file of userToken.txt
     	SlackInfo.setToken(SlackInfo.externalToken());
     	printTime();
 //    	
+    	switch(userInput)
+    	{
+    	case "active":
+    		System.out.println("Active settings started");
+    		break;
+    	case "inactive":
+    		System.out.println("Deactivating the Raspberry Pi");
+    		break;
+    	}
     	
     	APICalls.apiTest();
     	APICalls.authTest();
@@ -23,7 +34,11 @@ public class App
     	do{
 		try {
 			APICalls.channelHistory();
-		} catch (Exception e) {
+		}
+		catch (UnknownHostException LostConection){
+			System.out.println("Connection was lost from the Pi");
+		}
+		catch (Exception e) {
 			 //TODO Auto-generated catch block
 			e.printStackTrace();
 			break;
