@@ -81,7 +81,7 @@ public class JSON {
 			
 			System.out.println("Reviewing Message " + count);
 			
-			if(mapValue.equalsIgnoreCase("Taylor") && !mapKey.equals(SlackInfo.getLastMessage())){
+			if(mapValue.contains("Taylor") && !mapKey.equals(SlackInfo.getLastMessage())){
 				System.out.println("MATCH FOUND");
 				presence = true;
 				SlackInfo.setLastMessage(indexObj.get(key).toString());
