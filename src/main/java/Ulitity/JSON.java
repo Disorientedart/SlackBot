@@ -62,7 +62,7 @@ public class JSON {
      * Parses response for information about the content of previous messages
      * @param response
      * @param key
-     * @return
+     * @return boolean
      * @throws IOException
      */
     public static boolean parseJSONMessages(String response, String key) throws IOException{

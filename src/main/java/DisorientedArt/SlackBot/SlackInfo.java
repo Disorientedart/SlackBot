@@ -1,6 +1,5 @@
 package DisorientedArt.SlackBot;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class SlackInfo {
 	private static String oldest;
 	private static int simpleLatest 	= 0;
 	private static int unread 			= 0;
-	private static String username 		= "t_swift";
+	private static String username 		= "T_Swift";
 	private static String token;
 
 	
