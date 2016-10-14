@@ -16,16 +16,11 @@ public class App
     {
     	
     	printTime();
-    	if(args[0].equals(null)){
-    		args[0] = "user";
-    	}
+
     	String userInput = args[0];
     	//Sets the token from external file of userToken.txt
     	SlackInfo.setToken(SlackInfo.externalToken());
 
-    	APICalls.apiTest();
-    	APICalls.authTest();
-    	
 		switch (userInput)
     	{
     		case "active":
@@ -72,7 +67,7 @@ public class App
     	    		}
     	    		catch (SocketTimeoutException LostConection){
     	    			Thread.sleep(10000);
-    	    			System.out.println("Connection was lost from the Pi");
+    	    			System.out.println("Connection was lost from the Pi, forcing 10 second wait before trying again");
     	    		}
     	    		catch (Exception e) {
     					 //TODO Auto-generated catch block
@@ -89,7 +84,7 @@ public class App
     }
 
     public static void printTime(){
-    	System.out.println(LocalTime.now());
+    	System.out.println("SlackBot Timeframe: " + LocalTime.now());
     }
     
 }

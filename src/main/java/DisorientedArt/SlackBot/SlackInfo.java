@@ -13,7 +13,7 @@ public class SlackInfo {
 	private static String channel 		= "C1HGYEM6G";	
 	private static int count 			= 2;	
 	private static String deleteMessage;
-	private static String icon_url 		= "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWkPhG_GW1M0nX1HWalRSE7BrkYS_cNzXZxd3J1EHdZ19u9iOO";//https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9WT4IhPDT1Zg0tE0QpRtSgLNnpKUblzn-TGiOY01QRG4Ktq-R
+	private static String icon_url 		= "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWkPhG_GW1M0nX1HWalRSE7BrkYS_cNzXZxd3J1EHdZ19u9iOO";//
 	private static int inclusive 		= 1;
 	private static String latest;
 	private static String lastMessage;
@@ -21,7 +21,7 @@ public class SlackInfo {
 	private static String oldest;
 	private static int simpleLatest 	= 0;
 	private static int unread 			= 0;
-	private static String username 		= "T_Swift";
+	private static String username 		= "T_S";
 	private static String token;
 
 	
