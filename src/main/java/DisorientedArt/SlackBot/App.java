@@ -14,7 +14,7 @@ public class App
     {
     	//Sets the token from external file of userToken.txt
     	SlackInfo.setToken(SlackInfo.externalToken());
-//    	printTime();
+    	printTime();
 //    	
     	
     	APICalls.apiTest();
