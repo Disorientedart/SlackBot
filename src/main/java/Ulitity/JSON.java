@@ -81,13 +81,17 @@ public class JSON {
 			
 			System.out.println("Reviewing Message " + count);
 			
-			System.out.println(mapKey);
-			System.out.println(SlackInfo.getLastMessage());
-			if(mapValue.contains("Taylor") && !mapKey.equals(SlackInfo.getLastMessage())){
-				System.out.println("MATCH FOUND");
+			if(mapValue.toLowerCase().contains("taylor") && !mapKey.equals(SlackInfo.getLastMessage())){
+				System.out.println("MATCH FOUND for \"taylor\"");
 				presence = true;
 				SlackInfo.setLastMessage(indexObj.get(key).toString());
 				break;
+			}
+			else if(mapValue.toLowerCase().contains("swift")&& !mapKey.equals(SlackInfo.getLastMessage())){
+			System.out.println("MATCH FOUND for \"swift\"");
+			presence = true;
+			SlackInfo.setLastMessage(indexObj.get(key).toString());
+			break;
 			}
 			count++;
 		}

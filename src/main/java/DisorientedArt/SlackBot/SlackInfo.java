@@ -13,7 +13,7 @@ public class SlackInfo {
 	private static String channel 		= "C1HGYEM6G";	
 	private static int count 			= 2;	
 	private static String deleteMessage;
-	private static String icon_url 		= "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWkPhG_GW1M0nX1HWalRSE7BrkYS_cNzXZxd3J1EHdZ19u9iOO";//
+	private static String icon_url;
 	private static int inclusive 		= 1;
 	private static String latest;
 	private static String lastMessage;

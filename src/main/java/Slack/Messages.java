@@ -34,7 +34,7 @@ public class Messages {
      */
     public static String randomAdjective(){
     	
-    	String[] adjective = {
+    	String[] adjectives = {
     			"other", "new", "good",	"high",
     			"old", "great", "big", "American",
     			"small", "large", "national", "young",
@@ -58,9 +58,26 @@ public class Messages {
     	};
     	
     	Random randNum = new Random();
-    	int i = randNum.nextInt(adjective.length);
-    	String message = adjective[i];
-    	return message;
+    	int i = randNum.nextInt(adjectives.length);
+    	String adjective = adjectives[i];
+    	return adjective;
+    }
+    
+    public static String randomImage(){
+    	
+    	String[] availableImage = {
+    			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv8cWiKHOSJqT8zB5qT0JHC_nhEJ1d7EBBZ4BLVhTb6nA2cNVgag",
+    			"https://celebdial.s3.amazonaws.com/celeb_thumb/6e72c92dade7697c6c48a4e07831af5a.png",
+    			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqbQ0XskYqw-CLlSs0fpq7ivq4b9rpm5GvP0rtBxbU8WzQU8wf",
+    			"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5GDIuM8suR-lI0wrsW3ljcbvPHdFDsmP-d8kSXkaLkmHXXeM3TA",
+    			"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWkPhG_GW1M0nX1HWalRSE7BrkYS_cNzXZxd3J1EHdZ19u9iOO",
+    			"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTIByKCjei5RYuTxGIwsSIWn1ODLrBFaVFIbljuPCUdyp9Yuw0x"			
+    	};
+    	
+    	Random randNum = new Random();
+    	int i = randNum.nextInt(availableImage.length);
+    	String image = availableImage[i];
+    	return image;
     }
 
 }

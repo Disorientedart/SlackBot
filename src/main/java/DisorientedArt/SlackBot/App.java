@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.time.LocalTime;
+import java.util.Calendar;
 
 import Slack.Messages;
 import Ulitity.APICalls;
@@ -20,6 +21,7 @@ public class App
     	String userInput = args[0];
     	//Sets the token from external file of userToken.txt
     	SlackInfo.setToken(SlackInfo.externalToken());
+    	SlackInfo.setIcon_url(Messages.randomImage());
 
 		switch (userInput)
     	{
@@ -67,7 +69,7 @@ public class App
     	    		}
     	    		catch (SocketTimeoutException LostConection){
     	    			Thread.sleep(10000);
-    	    			System.out.println("Connection was lost from the Pi, forcing 10 second wait before trying again");
+    	    			System.out.println("Connection was lost from the Pi, forcing 10 second wait before trying again.");
     	    		}
     	    		catch (Exception e) {
     					 //TODO Auto-generated catch block
@@ -87,4 +89,22 @@ public class App
     	System.out.println("SlackBot Timeframe: " + LocalTime.now());
     }
     
+    public static int getDate(){
+    	Calendar calendar = Calendar.getInstance();
+    	int dayOfYear = calendar.get(Calendar.DAY_OF_YEAR); 
+    	return dayOfYear;
+    }
+    
+    public static void setMood(){
+    	int dayOfYear = getDate();
+    	if(dayOfYear %5 == 0){
+    		System.out.println("Mood is set to happy");
+    	}
+    	else if (dayOfYear %4 == 0){
+    		System.out.println("Mood is set to nuetral");
+    	}
+    	else if(dayOfYear %3 == 0){
+    		System.out.println("Mood is set to sad");
+    	}
+    }
 }
