@@ -7,9 +7,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import DisorientedArt.SlackBot.SlackInfo;
+import Personalities.ISlackBot;
 
 
 public class JSON {
+	
+	static ISlackBot slackBot;
 	
 	/**
 	 * Creates a JSONObject to be used for an API call and returns the object
@@ -65,34 +68,20 @@ public class JSON {
      * @return boolean
      * @throws IOException
      */
-    public static boolean parseJSONMessages(String response, String key) throws IOException{
+    public static boolean parseJSONMessages(String response) throws IOException{    	
     	boolean presence = false;
-		JSONObject parseME = new JSONObject(response);
-		JSONArray useMe = parseME.getJSONArray("messages");
+		JSONObject historyJSON = new JSONObject(response);
+		JSONArray messagesJSONs = historyJSON.getJSONArray("messages");
 		
     	System.out.println("Reviewing Messages:");
     	
 		int count = 0;
-		while(count< useMe.length()){
-			JSONObject indexObj = useMe.optJSONObject(count);
-			String mapKey = indexObj.get(key).toString();
-			String mapValue = indexObj.get("text").toString();
-			System.out.println("Message " + count + " " + mapValue);
-			
-			System.out.println("Reviewing Message " + count);
-			
-			if(mapValue.toLowerCase().contains("taylor") && !mapKey.equals(SlackInfo.getLastMessage())){
-				System.out.println("MATCH FOUND for \"taylor\"");
-				presence = true;
-				SlackInfo.setLastMessage(indexObj.get(key).toString());
-				break;
-			}
-			else if(mapValue.toLowerCase().contains("swift")&& !mapKey.equals(SlackInfo.getLastMessage())){
-			System.out.println("MATCH FOUND for \"swift\"");
-			presence = true;
-			SlackInfo.setLastMessage(indexObj.get(key).toString());
-			break;
-			}
+		while(count < messagesJSONs.length()){
+			JSONObject indexObj = messagesJSONs.optJSONObject(count);
+			String tsValue 		= indexObj.get("ts").toString();
+			String textValue 	= indexObj.get("text").toString();
+			String[] information = {tsValue, textValue};
+			slackBot.botResponses(information);
 			count++;
 		}
     	return presence;

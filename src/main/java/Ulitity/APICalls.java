@@ -3,7 +3,7 @@ package Ulitity;
 import java.io.IOException;
 
 import DisorientedArt.SlackBot.SlackInfo;
-import Slack.Messages;
+import Personalities.ISlackBot;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -90,8 +90,8 @@ public class APICalls {
 		postAPI(hostAddress, body);
 	}
 	
-    public static void channelHistory()throws IOException{
-		System.out.println("Looking at the Channel History of #t_swift");
+    public static void channelHistory(ISlackBot slackBot)throws IOException{
+		System.out.println("Looking at the Channel History");
 		
 		String hostAddress = SlackInfo.getApiHost() + "/channels.history";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
@@ -101,11 +101,7 @@ public class APICalls {
     			+ SlackInfo.getInclusiveURL()
     			+ SlackInfo.getCountURL());
     	
-    	String messageLogs = postParse(hostAddress, body);
-		boolean activateBot = JSON.parseJSONMessages(messageLogs, "ts");
-		if (activateBot){
-			APICalls.postMessage(Messages.randomMessage());
-		}
+    	slackBot.historyResponse(readablePost(hostAddress, body));
 	}
     
 	/**
@@ -171,7 +167,7 @@ public class APICalls {
 	 * @param body
 	 * @throws IOException
 	 */
-	private static String postParse(String hostAddress, RequestBody body) throws IOException {
+	private static String readablePost(String hostAddress, RequestBody body) throws IOException {
     	OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()
     	  .url(hostAddress)
@@ -192,7 +188,7 @@ public class APICalls {
 	 * @param body
 	 * @throws IOException
 	 */
-	private static String getParse(String hostAddress, RequestBody body) throws IOException {
+	private static String readableGet(String hostAddress, RequestBody body) throws IOException {
     	OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()
     	  .url(hostAddress)

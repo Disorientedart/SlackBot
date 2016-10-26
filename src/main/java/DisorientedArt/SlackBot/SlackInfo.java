@@ -8,9 +8,9 @@ import java.io.IOException;
 public class SlackInfo {
 	
 	private static String apiHost 		= "https://slack.com/api";
-	private static boolean as_user 		= false;
-	private static String botID 		= "B2AR86QCB";	
-	private static String channel 		= "C1HGYEM6G";	
+	private static boolean as_user;
+	private static String botID;	
+	private static String channel;	
 	private static int count 			= 2;	
 	private static String deleteMessage;
 	private static String icon_url;
@@ -21,7 +21,7 @@ public class SlackInfo {
 	private static String oldest;
 	private static int simpleLatest 	= 0;
 	private static int unread 			= 0;
-	private static String username 		= "T_S";
+	private static String username;
 	private static String token;
 
 	

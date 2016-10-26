@@ -6,7 +6,8 @@ import java.net.UnknownHostException;
 import java.time.LocalTime;
 import java.util.Calendar;
 
-import Slack.Messages;
+import Personalities.ISlackBot;
+import Personalities.TaylorBot;
 import Ulitity.APICalls;
 
 
@@ -21,14 +22,16 @@ public class App
     	String userInput = args[0];
     	//Sets the token from external file of userToken.txt
     	SlackInfo.setToken(SlackInfo.externalToken());
-    	SlackInfo.setIcon_url(Messages.randomImage());
+    	
+    	ISlackBot slackBot = new TaylorBot();
+    	slackBot.setPersonality();
 
 		switch (userInput)
     	{
     		case "active":
     	    	do{
     	    		try {
-    					APICalls.channelHistory();
+    					APICalls.channelHistory(slackBot);
     				} 
     	    		catch (UnknownHostException LostConection){
     	    			System.out.println("Connection was lost from the Pi");
@@ -56,13 +59,13 @@ public class App
     	    	APICalls.apiTest();
     	    	APICalls.authTest();
     	    	APICalls.setActiveUser();
-    	    	APICalls.giphyMessage(Messages.randomAdjective());
+    	    	APICalls.giphyMessage(slackBot.randomMessage());
     			break;
     		
     		default:
     	    	do{
     	    		try {
-    					APICalls.channelHistory();
+    					APICalls.channelHistory(slackBot);
     				}
     	    		catch (UnknownHostException LostConection){
     	    			System.out.println("Connection was lost from the Pi");
