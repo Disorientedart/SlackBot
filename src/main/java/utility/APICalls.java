@@ -1,105 +1,124 @@
-package Ulitity;
+package utility;
 
 import java.io.IOException;
 
-import DisorientedArt.SlackBot.SlackInfo;
-import Personalities.ISlackBot;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import personalities.ISlackBot;
+import slackBot.SlackInfo;
 
-public class APICalls {
+public class APICalls 
+{
+	SlackInfo slackInfo;
+	
+	private String apiHost 		= "https://slack.com/api";
+	
+	public String getApiHost() {
+		return apiHost;
+	}
+	public  void setApiHost(String value) {
+		apiHost = value;
+	}
 
-	public static void postMessage(String text) throws IOException {
+	public void postMessage(String text) throws IOException 
+	{
 		System.out.println("Preparing to post a message");
 		
 		String addOn = "&text=" + text;
 		
-		APICalls.postMessageBuilder(addOn);
+		postMessageBuilder(addOn);
 	}
 	
-	public static void giphyMessage(String text) throws IOException {
+	public void giphyMessage(String text) throws IOException 
+	{
 		System.out.println("Preparing to post a message");
 		
 		String addOn = "&text=" + text + " Taylor Swift"
 				+ "&command=/giphy";
 		
-		APICalls.postMessageBuilder(addOn);
+		postMessageBuilder(addOn);
 	}
 
-	private static void postMessageBuilder(String addOns) throws IOException {
+	private void postMessageBuilder(String addOns) throws IOException 
+	{
 		System.out.println("Building the message");
 		// API address
-		String hostAddress = SlackInfo.getApiHost() + "/chat.postMessage";
+		String hostAddress = getApiHost() + "/chat.postMessage";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
 		RequestBody body = RequestBody.create(mediaType,
-				SlackInfo.getTokenURL()
-				+ SlackInfo.getChannelURL()
-				+ SlackInfo.getUsernameURL()
-				+ SlackInfo.getIcon_urlURL()
+				slackInfo.getTokenURL()
+				+ slackInfo.getChannelURL()
+				+ slackInfo.getUsernameURL()
+				+ slackInfo.getIcon_urlURL()
 				+ addOns);
 
 		postAPI(hostAddress, body);
 	}
 
-	public static void removeMessage() throws IOException {
+	public void removeMessage() throws IOException 
+	{
 		System.out.println("Preparing to remove a message");
 		
-		String hostAddress = SlackInfo.getApiHost() + "/chat.delete";
+		String hostAddress = getApiHost() + "/chat.delete";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
 		RequestBody body = RequestBody.create(mediaType, 
-				SlackInfo.getTokenURL()
-				+ SlackInfo.getChannelURL()
-				+ SlackInfo.getDeleteMessageURL());
+				slackInfo.getTokenURL()
+				+ slackInfo.getChannelURL()
+				+ slackInfo.getDeleteMessageURL());
 		
 		postAPI(hostAddress, body);
 	}
 
-	public static void apiTest() throws IOException {
+	public void apiTest() throws IOException 
+	{
 		System.out.println("Performing an API Test");
 
-		String hostAddress = SlackInfo.getApiHost() + "/api.test";
+		String hostAddress = getApiHost() + "/api.test";
 
 		getAPI(hostAddress);
 	}
 
-	public static void authTest() throws IOException {
+	public void authTest() throws IOException 
+	{
 		System.out.println("Performing an Auth Test");
 
-		String hostAddress = SlackInfo.getApiHost() + "/auth.test";
+		String hostAddress = getApiHost() + "/auth.test";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
 		RequestBody body = RequestBody.create(mediaType, 
-				SlackInfo.getTokenURL());
+				slackInfo.getTokenURL());
 		
 		postAPI(hostAddress, body);
 	}
 
-	public static void rtmStart() throws IOException {
+	public void rtmStart() throws IOException 
+	{
 		System.out.println("Starting Real Time Messaging");
 
-		String hostAddress = SlackInfo.getApiHost() + "/rtm.start";
+		String hostAddress = getApiHost() + "/rtm.start";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
 		RequestBody body = RequestBody.create(mediaType,
-				SlackInfo.getTokenURL()
-				+ SlackInfo.getUnreadURL()
-				+ SlackInfo.getSimpleLatestURL()
-				+ SlackInfo.getMPIMAwareURL());
+				slackInfo.getTokenURL()
+				+ slackInfo.getUnreadURL()
+				+ slackInfo.getSimpleLatestURL()
+				+ slackInfo.getMPIMAwareURL());
 		
 		postAPI(hostAddress, body);
 	}
 	
-    public static void channelHistory(ISlackBot slackBot)throws IOException{
+    public void channelHistory(ISlackBot slackBot)throws IOException
+    {
 		System.out.println("Looking at the Channel History");
 		
-		String hostAddress = SlackInfo.getApiHost() + "/channels.history";
+		String hostAddress = getApiHost() + "/channels.history";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
     	RequestBody body = RequestBody.create(mediaType, 
-    			SlackInfo.getTokenURL()
-    			+ SlackInfo.getChannelURL()
-    			+ SlackInfo.getInclusiveURL()
-    			+ SlackInfo.getCountURL());
+    			slackInfo.getTokenURL()
+    			+ slackInfo.getChannelURL()
+    			+ slackInfo.getInclusiveURL()
+    			+ slackInfo.getCountURL());
     	
     	slackBot.historyResponse(readablePost(hostAddress, body));
 	}
@@ -108,16 +127,17 @@ public class APICalls {
 	 * Sets the User Token to active on the Slack messenger
 	 * @throws IOException
 	 */
-    public static void setActiveUser() throws IOException{
+    public void setActiveUser() throws IOException
+    {
     	//users.setActive
     	
     	System.out.println("Setting User to Active");
 
-    	String hostAddress = SlackInfo.getApiHost() +"/users.setActive";
+    	String hostAddress = getApiHost() +"/users.setActive";
 
     	MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
     	RequestBody body = RequestBody.create(mediaType, 
-    			SlackInfo.getTokenURL()
+    			slackInfo.getTokenURL()
     			);
     	postAPI(hostAddress, body);
     }
@@ -127,7 +147,8 @@ public class APICalls {
 	 * @param hostAddress
 	 * @throws IOException
 	 */
-	private static void getAPI(String hostAddress) throws IOException {
+	private void getAPI(String hostAddress) throws IOException 
+	{
     	OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()
     	  .url(hostAddress)
@@ -147,7 +168,8 @@ public class APICalls {
 	 * @param body
 	 * @throws IOException
 	 */
-	private static void postAPI(String hostAddress, RequestBody body) throws IOException {
+	private void postAPI(String hostAddress, RequestBody body) throws IOException 
+	{
     	OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()
     	  .url(hostAddress)
@@ -167,7 +189,8 @@ public class APICalls {
 	 * @param body
 	 * @throws IOException
 	 */
-	private static String readablePost(String hostAddress, RequestBody body) throws IOException {
+	private String readablePost(String hostAddress, RequestBody body) throws IOException 
+	{
     	OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()
     	  .url(hostAddress)
@@ -188,7 +211,8 @@ public class APICalls {
 	 * @param body
 	 * @throws IOException
 	 */
-	private static String readableGet(String hostAddress, RequestBody body) throws IOException {
+	private String readableGet(String hostAddress, RequestBody body) throws IOException 
+	{
     	OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()
     	  .url(hostAddress)
