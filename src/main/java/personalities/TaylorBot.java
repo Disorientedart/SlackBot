@@ -19,12 +19,14 @@ public class TaylorBot implements ISlackBot{
 	private static String channel 	= "C1HGYEM6G";	
 	private static String username	= "T_S";
 	
+	
 	public void setPersonality()
 	{
 		slackInfo.setAS_User(as_user);
 		slackInfo.setBotID(botID);
 		slackInfo.setChannel(channel);
 		slackInfo.setUsername(username);
+		slackInfo.setIcon_url(randomImage());
 	}
 
 	/**
