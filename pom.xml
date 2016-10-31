@@ -55,7 +55,7 @@
       <configuration>
         <archive>
           <manifest>
-            <mainClass>DisorientedArt.SlackBot.App</mainClass>
+            <mainClass>slackBot.App</mainClass>
           </manifest>
         </archive>
         <descriptorRefs>
