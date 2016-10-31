@@ -8,11 +8,13 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import personalities.ISlackBot;
+import slackBot.ClassHandler;
 import slackBot.SlackInfo;
 
 public class APICalls 
 {
-	SlackInfo slackInfo;
+	SlackInfo slackInfo = ClassHandler.getSlackInfo();
+	ISlackBot slackBot = ClassHandler.getSlackBot();
 	
 	private String apiHost 		= "https://slack.com/api";
 	
@@ -21,6 +23,13 @@ public class APICalls
 	}
 	public  void setApiHost(String value) {
 		apiHost = value;
+	}
+	
+	public void testAPI() throws IOException
+	{
+		apiTest();
+		authTest();
+		setActiveUser();
 	}
 
 	public void postMessage(String text) throws IOException 

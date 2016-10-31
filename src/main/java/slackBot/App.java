@@ -7,39 +7,44 @@ import java.net.UnknownHostException;
 import personalities.ISlackBot;
 import personalities.TaylorBot;
 import utility.APICalls;
-import utility.Util;
+import utility.Utilities;
 
 
-public class App
+public class App extends ClassHandler 
 {
 
     public static void main( String[] args ) throws IOException, InterruptedException
     {
     	String userInput = args[0];
-    
-    	Util utility;
-    	ISlackBot slackBot = new TaylorBot();
-    	APICalls apiCalls;
+    	
+    	Utilities utility = getUtility();
+    	APICalls apiCall = getApiCalls();
+    	setSlackBot(new TaylorBot());
+    	ISlackBot slackBot = getSlackBot();
+    	SlackInfo slackInfo = getSlackInfo();
+    	
+    	slackInfo.setToken(utility.externalToken());
     	
     	utility.printTime();
-
-    	//SlackInfo.setToken(utility.externalToken());
     	
     	slackBot.setPersonality();
 
 		switch (userInput)
     	{    			
+			case "delete":
+				slackInfo.setDeleteMessage("1477887041.000003");
+				apiCall.removeMessage();
+				slackInfo.setDeleteMessage("1477887040.000002");
+				apiCall.removeMessage();
+				break;
     		case "test":
-    			apiCalls.apiTest();
-    			apiCalls.authTest();
-    			apiCalls.setActiveUser();
-    			apiCalls.giphyMessage(slackBot.randomMessage());
+    			apiCall.testAPI();
     			break;
     		
     		default:
     	    	do{
     	    		try {
-    	    			apiCalls.channelHistory(slackBot);
+    	    			apiCall.channelHistory(slackBot);
     				}
     	    		catch (UnknownHostException LostConection){
     	    			System.out.println("Connection was lost from the Pi");

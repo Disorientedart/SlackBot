@@ -6,7 +6,7 @@ public class SlackInfo {
 	private boolean as_user;
 	private String botID;	
 	private String channel;	
-	private int count 			= 2;	
+	private int count 			= 1;	
 	private String deleteMessage;
 	private String icon_url;
 	private int inclusive 		= 1;

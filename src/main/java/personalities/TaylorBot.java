@@ -2,21 +2,22 @@ package personalities;
 
 import java.io.IOException;
 
+import slackBot.ClassHandler;
 import slackBot.SlackInfo;
 import utility.APICalls;
 import utility.JSON;
-import utility.Util;
+import utility.Utilities;
 
 public class TaylorBot implements ISlackBot{
 
-	SlackInfo slackInfo = new SlackInfo();
-	APICalls apiCalls = new APICalls();
-	Util utility;
+	SlackInfo slackInfo = ClassHandler.getSlackInfo();
+	APICalls  apiCalls 	= ClassHandler.getApiCalls();
+	Utilities utility 	= ClassHandler.getUtility();
 	
-	private static boolean as_user 		= false;
-	private static String botID 		= "B2AR86QCB";	
-	private static String channel 		= "C1HGYEM6G";	
-	private static String username 		= "T_S";
+	private static boolean as_user 	= false;
+	private static String botID 	= "B2AR86QCB";	
+	private static String channel 	= "C1HGYEM6G";	
+	private static String username	= "T_S";
 	
 	public void setPersonality()
 	{

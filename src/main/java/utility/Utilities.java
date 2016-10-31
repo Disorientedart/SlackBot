@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Random;
 
-public class Util 
+public class Utilities 
 {
 	
     public void printTime()

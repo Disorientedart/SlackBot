@@ -7,13 +7,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import personalities.ISlackBot;
+import slackBot.ClassHandler;
 import slackBot.SlackInfo;
 
 
 public class JSON {
 	
-	 ISlackBot slackBot;
-	 SlackInfo slackInfo = new SlackInfo();
+	 ISlackBot slackBot  = ClassHandler.getSlackBot();
+	 SlackInfo slackInfo = ClassHandler.getSlackInfo();
 	
 	/**
 	 * Creates a JSONObject to be used for an API call and returns the object
