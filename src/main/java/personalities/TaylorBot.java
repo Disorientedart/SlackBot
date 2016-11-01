@@ -47,7 +47,6 @@ public class TaylorBot implements ISlackBot{
     			"It feels like a perfect night to dress up like hipsters\nAnd make fun of our exes, uh uh, uh uh",
     			"It feels like one of those nights,\nWe ditch the whole scene"
     		};
-    	
     	return availableMessages[utility.randomNumber(availableMessages)];
     }
     
@@ -95,8 +94,37 @@ public class TaylorBot implements ISlackBot{
     			"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSWkPhG_GW1M0nX1HWalRSE7BrkYS_cNzXZxd3J1EHdZ19u9iOO",
     			"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTIByKCjei5RYuTxGIwsSIWn1ODLrBFaVFIbljuPCUdyp9Yuw0x"			
     		};
-    	
     	return availableImage[utility.randomNumber(availableImage)];
+    }
+    
+	/**
+	 * Returns a positive response to a giphy message
+	 * @return
+	 */
+    public String randomPositve()
+    {
+    	String[] availableMessages = 
+    		{
+    			"Nice post",
+    			"Good stuff",
+    			"Boom"
+    		};
+    	return availableMessages[utility.randomNumber(availableMessages)];
+    }
+    
+	/**
+	 * Returns a negative responses
+	 * @return
+	 */
+    public String randomNegative()
+    {
+    	String[] availableMessages = 
+    		{
+    			":(",
+    			"sigh",
+    			"nope"
+    		};
+    	return availableMessages[utility.randomNumber(availableMessages)];
     }
 
 	public void historyResponse(String historyLogs) throws IOException 
@@ -107,6 +135,7 @@ public class TaylorBot implements ISlackBot{
 	
 	public void botResponses(String[] messages) throws IOException
 	{
+		System.out.println("Preparing REsponse");
 		System.out.println(messages[0] + " Message: " + messages[1]);
 		if(messages[1].toLowerCase().contains("taylor") && !messages[0].equals(slackInfo.getLastMessage())){
 			slackInfo.setLastMessage(messages[0]);
@@ -118,7 +147,11 @@ public class TaylorBot implements ISlackBot{
 		}
 		else if(messages[1].toLowerCase().contains("kanye") && !messages[0].equals(slackInfo.getLastMessage())){
 			slackInfo.setLastMessage(messages[0]);
-			apiCalls.postMessage(":(");
+			apiCalls.postMessage(randomNegative());
+		}
+		else if(messages[1].toLowerCase().contains("giphy") && !messages[0].equals(slackInfo.getLastMessage())){
+			slackInfo.setLastMessage(messages[0]);
+			apiCalls.postMessage(randomPositve());
 		}
 	}
 

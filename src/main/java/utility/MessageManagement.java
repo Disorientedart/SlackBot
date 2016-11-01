@@ -1,5 +1,9 @@
 package utility;
 
+import personalities.ISlackBot;
+import slackBot.ClassHandler;
+import slackBot.SlackInfo;
+
 public class MessageManagement {
 	
 	public static String[] channelHistory;
