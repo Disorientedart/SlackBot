@@ -8,12 +8,12 @@ import utility.APICalls;
 import utility.JSON;
 import utility.Utilities;
 
-public class TaylorBot implements ISlackBot {
-
+public class BotNumberTwo implements ISlackBot {
+	
 	private static boolean as_user = false;
-	private static String botID = "B2AR86QCB";
-	private static String channel = "C1HGYEM6G";
-	private static String username = "T_S";
+	private static String botID = "U0C2l21FS";
+	private static String channel = "G2G4EBBBM";
+	private static String username;
 
 	APICalls apiCalls = ClassHandler.getApiCalls();
 	SlackInfo slackInfo = ClassHandler.getSlackInfo();
@@ -117,5 +117,6 @@ public class TaylorBot implements ISlackBot {
 		slackInfo.setUsername(username);
 		slackInfo.setIcon_url(randomImage());
 	}
+
 
 }
