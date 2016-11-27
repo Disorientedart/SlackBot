@@ -1,7 +1,7 @@
 package slackBot;
 
 import personalities.ISlackBot;
-import utility.APICalls;
+import slackAPI.APICalls;
 import utility.Utilities;
 
 public class ClassHandler {

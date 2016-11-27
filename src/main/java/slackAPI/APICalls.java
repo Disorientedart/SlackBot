@@ -1,4 +1,4 @@
-package utility;
+package slackAPI;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class APICalls
 	private String apiHost = "https://slack.com/api";
 	ISlackBot slackBot = ClassHandler.getSlackBot();
 	
-	SlackInfo slackInfo = ClassHandler.getSlackInfo();
+	protected SlackInfo slackInfo = ClassHandler.getSlackInfo();
 	
 	public void apiTest() throws IOException 
 	{
@@ -78,6 +78,7 @@ public class APICalls
     			+ slackInfo.getCountURL());
     	
     	slackBot.historyResponse(readablePost(hostAddress, body));
+    	
 	}
 	
 	public void channelHistory(ISlackBot slackBot)throws IOException
@@ -135,7 +136,7 @@ public class APICalls
 	 * @param body
 	 * @throws IOException
 	 */
-	private void postAPI(String hostAddress, RequestBody body) throws IOException 
+	protected void postAPI(String hostAddress, RequestBody body) throws IOException 
 	{
     	OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder()

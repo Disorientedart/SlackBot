@@ -2,9 +2,9 @@ package personalities;
 
 import java.io.IOException;
 
+import slackAPI.APICalls;
 import slackBot.ClassHandler;
 import slackBot.SlackInfo;
-import utility.APICalls;
 import utility.JSON;
 import utility.Utilities;
 
@@ -20,7 +20,7 @@ public class TaylorBot implements ISlackBot {
 	Utilities utility = ClassHandler.getUtility();
 
 	public void botResponses(String[] messages) throws IOException {
-		System.out.println("Preparing REsponse");
+		System.out.println("Preparing Response");
 		System.out.println(messages[0] + " Message: " + messages[1]);
 		if (messages[1].toLowerCase().contains("taylor") && !messages[0].equals(slackInfo.getLastMessage())) {
 			slackInfo.setLastMessage(messages[0]);

@@ -1,8 +1,12 @@
 package utility;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Random;
@@ -54,6 +58,17 @@ public class Utilities {
 			System.out.println("Mood is set to nuetral");
 		} else if (dayOfYear % 3 == 0) {
 			System.out.println("Mood is set to sad");
+		}
+	}
+	
+	public void writeToFile(String feed) throws Exception{
+		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+	              new FileOutputStream("filename.txt"), "utf-8"))) 
+		{
+			writer.write(feed);
+		}
+		catch(Exception e){
+			throw e;
 		}
 	}
 

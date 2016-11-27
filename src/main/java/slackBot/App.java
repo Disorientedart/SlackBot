@@ -7,7 +7,7 @@ import java.net.UnknownHostException;
 import personalities.BotNumberTwo;
 import personalities.ISlackBot;
 import personalities.TaylorBot;
-import utility.APICalls;
+import slackAPI.APICalls;
 import utility.Utilities;
 
 public class App extends ClassHandler {

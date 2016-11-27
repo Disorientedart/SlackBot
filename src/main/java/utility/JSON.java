@@ -20,7 +20,6 @@ public class JSON {
 	 */
 	public JSONObject createJSON() {
 		JSONObject parse = new JSONObject();
-
 		parse.put("ok", "true");
 
 		return parse;
@@ -33,7 +32,6 @@ public class JSON {
 	 */
 	public JSONObject messageJSON(String text) {
 		JSONObject parse = new JSONObject();
-
 		parse.put("token", slackInfo.getToken());
 		parse.put("channel", slackInfo.getChannel());
 		parse.put("text", text);
