@@ -18,6 +18,10 @@ public class APICalls
 	
 	protected SlackInfo slackInfo = ClassHandler.getSlackInfo();
 	
+	/**
+	 * GET: message to the "/api.test" url
+	 * @throws IOException
+	 */
 	public void apiTest() throws IOException 
 	{
 		System.out.println("Performing an API Test");
@@ -27,11 +31,13 @@ public class APICalls
 		getAPI(hostAddress);
 	}
 	
-	
-	
+	/**
+	 * POST: message to "/groups.list"
+	 * @throws IOException
+	 */
 	public void getGroupList() throws IOException 
 	{
-		System.out.println("Performing an Auth Test");
+		System.out.println("Retrieving a Group List");
 
 		String hostAddress = getApiHost() + "/groups.list";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
@@ -41,9 +47,13 @@ public class APICalls
 		postAPI(hostAddress, body);
 	}
 	
+	/**
+	 * POST: message to "/channels.list"
+	 * @throws IOException
+	 */
 	public void getChannelList() throws IOException 
 	{
-		System.out.println("Performing an Auth Test");
+		System.out.println("Retrieving a Channels List");
 
 		String hostAddress = getApiHost() + "/channels.list";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
@@ -53,6 +63,10 @@ public class APICalls
 		postAPI(hostAddress, body);
 	}
 	
+	/**
+	 * POST: message to "/auth.test"
+	 * @throws IOException
+	 */
 	public void authTest() throws IOException 
 	{
 		System.out.println("Performing an Auth Test");
@@ -65,9 +79,15 @@ public class APICalls
 		postAPI(hostAddress, body);
 	}
 	
+	/**
+	 * Looks at the history of a group listing
+	 * @param slackBot
+	 * @return 
+	 * @throws IOException
+	 */
 	public void groupHistory(ISlackBot slackBot)throws IOException
     {
-		System.out.println("Looking at the Channel History");
+		System.out.println("Retrieving Group History");
 		
 		String hostAddress = getApiHost() + "/groups.history";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
@@ -83,7 +103,7 @@ public class APICalls
 	
 	public void channelHistory(ISlackBot slackBot)throws IOException
     {
-		System.out.println("Looking at the Channel History");
+		System.out.println("Retrieving Channel History");
 		
 		String hostAddress = getApiHost() + "/channels.history";
 		MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
@@ -120,11 +140,16 @@ public class APICalls
 		return apiHost;
 	}
 
+	/**
+	 * Attempts to create a Giphy response in Slack Channel
+	 * @param text
+	 * @throws IOException
+	 */
 	public void giphyMessage(String text) throws IOException 
 	{
 		System.out.println("Preparing to post a message");
 		
-		String addOn = "&text=" + text + " Taylor Swift"
+		String addOn = "&text=" + text + ""
 				+ "&command=/giphy";
 		
 		postMessageBuilder(addOn);
@@ -151,6 +176,11 @@ public class APICalls
     	System.out.println(strResponse);
 	}
 
+	/**
+	 * POST: Sends a string of text to the Channel or Group
+	 * @param text
+	 * @throws IOException
+	 */
 	public void postMessage(String text) throws IOException 
 	{
 		System.out.println("Preparing to post a message");
@@ -160,6 +190,11 @@ public class APICalls
 		postMessageBuilder(addOn);
 	}
 
+	/**
+	 * Composes all requirements for sending a string of text
+	 * @param addOns
+	 * @throws IOException
+	 */
 	private void postMessageBuilder(String addOns) throws IOException 
 	{
 		System.out.println("Building the message");
@@ -182,6 +217,7 @@ public class APICalls
 	 * @param body
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	private String readableGet(String hostAddress, RequestBody body) throws IOException 
 	{
     	OkHttpClient client = new OkHttpClient();
@@ -220,6 +256,10 @@ public class APICalls
     	return strResponse;
 	}
     
+	/**
+	 * Removes a message or a group of messages from the Channel or Group
+	 * @throws IOException
+	 */
 	public void removeMessage() throws IOException 
 	{
 		System.out.println("Preparing to remove a message");
@@ -234,6 +274,10 @@ public class APICalls
 		postAPI(hostAddress, body);
 	}
     
+	/**
+	 * Starts Real Time Messaging
+	 * @throws IOException
+	 */
 	public void rtmStart() throws IOException 
 	{
 		System.out.println("Starting Real Time Messaging");
@@ -272,6 +316,10 @@ public class APICalls
 		apiHost = value;
 	}
 	
+	/**
+	 * Grouping of methods to test the API calls
+	 * @throws IOException
+	 */
 	public void testAPI() throws IOException
 	{
 		apiTest();

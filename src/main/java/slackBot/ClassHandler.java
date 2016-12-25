@@ -4,6 +4,7 @@ import personalities.ISlackBot;
 import slackAPI.APICalls;
 import utility.Utilities;
 
+//Singleton class structure to prevent the unnecessary initializations of classes
 public class ClassHandler {
 
 	private static APICalls apiCalls = null;
