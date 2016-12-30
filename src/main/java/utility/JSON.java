@@ -71,8 +71,7 @@ public class JSON {
 	 * @return boolean
 	 * @throws IOException
 	 */
-	public boolean parseJSONMessages(String response) throws IOException {
-		boolean presence = false;
+	public void parseJSONMessages(String response) throws IOException {
 		JSONObject historyJSON = new JSONObject(response);
 		JSONArray messagesJSONs = historyJSON.getJSONArray("messages");
 
@@ -87,7 +86,6 @@ public class JSON {
 			slackBot.botResponses(information);
 			count++;
 		}
-		return presence;
 	}
 
 }
